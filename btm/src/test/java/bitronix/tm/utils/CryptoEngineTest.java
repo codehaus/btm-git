@@ -28,11 +28,20 @@ import junit.framework.TestCase;
  */
 public class CryptoEngineTest extends TestCase {
 
-    public void testCrypt() throws Exception {
-    	String textToCrypt = "java";
+    public void testCryptDES() throws Exception {
+    	String textToCrypt = "java and bitronix will rule the earth";
 
     	String cypherText = CryptoEngine.crypt("DES", textToCrypt);
         String decryptedText = CryptoEngine.decrypt("DES", cypherText);
+
+        assertEquals(textToCrypt, decryptedText);
+    }
+
+    public void testCrypt3DES() throws Exception {
+    	String textToCrypt = "java";
+
+    	String cypherText = CryptoEngine.crypt("DESede", textToCrypt);
+        String decryptedText = CryptoEngine.decrypt("DESede", cypherText);
 
         assertEquals(textToCrypt, decryptedText);
     }
